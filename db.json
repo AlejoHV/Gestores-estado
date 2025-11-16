@@ -1,0 +1,81 @@
+{
+  "tasks": [
+    {
+      "id": "1",
+      "title": "Comprar leche",
+      "completed": false,
+      "description": "Comprar leche de 1 litro",
+      "updatedAt": "2025-11-15T23:10:12.664Z"
+    },
+    {
+      "id": "2",
+      "title": "Estudiar Flutter",
+      "completed": false,
+      "description": "Estudiar Flutter para crear aplicaciones",
+      "updatedAt": "2025-11-15T21:08:25.254Z"
+    },
+    {
+      "id": "3",
+      "title": "Hacer ejercicio",
+      "description": "Hacer ejercicio para mantener la forma",
+      "completed": false,
+      "updatedAt": "2025-11-16T00:11:28.977Z"
+    },
+    {
+      "id": "6373c239-654c-44fb-97ca-c2f0a9983ab4",
+      "title": "Presentación proyecto integrador",
+      "description": "Presentar el proyecto integrador el día martes en la noche",
+      "completed": false,
+      "updatedAt": "2025-11-16T00:15:32.795Z"
+    },
+    {
+      "id": "6aeb90a0-6103-4bd8-8cb7-5249988d1bc9",
+      "title": "Comprar regalos",
+      "description": "Regalos para la familia y amigos",
+      "completed": false,
+      "updatedAt": "2025-11-16T00:37:50.467980Z"
+    },
+    {
+      "id": "37520c28-46b1-441e-bd3e-50c9b801bbed",
+      "title": "Mesualidad Gym",
+      "description": "Vencimiento de mensualidad del gimnasio 18 de noviembre",
+      "completed": false,
+      "updatedAt": "2025-11-16T00:45:42.540Z"
+    },
+    {
+      "id": "ca59818a-e38f-4438-be4d-beca1e99e847",
+      "title": "Comprar repuestos",
+      "description": "Comprar los repuestos para la moto, aceite, pata y pastillas.",
+      "completed": false,
+      "updatedAt": "2025-11-16T00:54:09.582Z"
+    },
+    {
+      "id": "f943ae7b-e99e-4390-adde-2c1b4b43c7e0",
+      "title": "Taller Redes I",
+      "description": "Realizar taller en grupo, Cisco Packet Tracer",
+      "completed": true,
+      "updatedAt": "2025-11-16T01:10:13.487Z"
+    },
+    {
+      "id": "d30aa7dd-9045-484d-9060-a864260bccd9",
+      "title": "Conexión API Rest P.I",
+      "description": "Terminar conexión back - front en el proyecto integrador",
+      "completed": true,
+      "updatedAt": "2025-11-16T01:10:14.687Z"
+    },
+    {
+      "id": "41ea4fd6-581f-4c9c-a423-c6d9c5c4c9d8",
+      "title": "Reunión con el team",
+      "description": "Reunión virtual con el equipo de trabajo",
+      "completed": true,
+      "updatedAt": "2025-11-16T01:10:16.174Z"
+    },
+    {
+      "id": "dc63db4a-ad30-46b1-9698-c844a3d0bf0b",
+      "title": "Decoración navideña",
+      "description": "Comprar y averiguar decoración navideña.",
+      "completed": true,
+      "updatedAt": "2025-11-16T01:10:20.710Z"
+    }
+  ]
+}
