@@ -10,6 +10,7 @@ class Task {
   final bool completed;
   @JsonKey(name: 'updatedAt')
   final DateTime updatedAt;
+  final DateTime? syncedAt;
 
   Task({
     required this.id,
@@ -17,6 +18,7 @@ class Task {
     this.description,
     required this.completed,
     required this.updatedAt,
+    this.syncedAt,
   });
 
   factory Task.fromJson(Map<String, dynamic> json) => _$TaskFromJson(json);
@@ -28,6 +30,7 @@ class Task {
     String? description,
     bool? completed,
     DateTime? updatedAt,
+    DateTime? syncedAt,
   }) {
     return Task(
       id: id ?? this.id,
@@ -35,6 +38,7 @@ class Task {
       description: description ?? this.description,
       completed: completed ?? this.completed,
       updatedAt: updatedAt ?? this.updatedAt,
+      syncedAt: syncedAt ?? this.syncedAt,
     );
   }
 

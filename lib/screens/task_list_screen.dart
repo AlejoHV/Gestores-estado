@@ -24,13 +24,53 @@ class _TaskListScreenState extends State<TaskListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('To-Do List'),
+        title: Consumer<TaskProvider>(
+          builder: (context, provider, child) {
+            String title = 'To-Do List';
+
+            if (provider.syncStatus == SyncStatus.syncing) {
+              title += ' (Sincronizando...)';
+            } else if (!provider.isOnline) {
+              title += ' (Offline)';
+            } else if (provider.syncStatus == SyncStatus.error) {
+              title += ' (Error)';
+            }
+
+            return Text(title);
+          },
+        ),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         actions: [
-          IconButton(
-            icon: const Icon(Icons.refresh),
-            onPressed: () {
-              context.read<TaskProvider>().refreshTasks();
+          Consumer<TaskProvider>(
+            builder: (context, provider, child) {
+              return Row(
+                children: [
+                  if (provider.syncStatus == SyncStatus.syncing)
+                    const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: SizedBox(
+                        width: 20,
+                        height: 20,
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      ),
+                    ),
+                  if (!provider.isOnline)
+                    const Icon(Icons.cloud_off, color: Colors.grey),
+                  if (provider.isOnline)
+                    const Icon(Icons.cloud_queue, color: Colors.green),
+                  IconButton(
+                    icon: const Icon(Icons.refresh),
+                    onPressed: () {
+                      provider.refreshTasks();
+                    },
+                  ),
+                  if (provider.syncError != null)
+                    IconButton(
+                      icon: const Icon(Icons.error, color: Colors.red),
+                      onPressed: () => _showSyncErrorDialog(context),
+                    ),
+                ],
+              );
             },
           ),
         ],
@@ -263,6 +303,44 @@ class _TaskListScreenState extends State<TaskListScreen> {
     );
   }
 
+  void _showSyncErrorDialog(BuildContext context) {
+    final provider = context.read<TaskProvider>();
+
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Error de Sincronización'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(provider.syncError ?? 'Error desconocido'),
+            const SizedBox(height: 16),
+            if (!provider.isOnline)
+              const Text(
+                'No hay conexión a internet. Las operaciones se sincronizarán cuando se restaure la conexión.',
+              ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: const Text('Cerrar'),
+          ),
+          if (provider.isOnline)
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                provider.clearSyncError();
+                provider.forceSync();
+              },
+              child: const Text('Reintentar'),
+            ),
+        ],
+      ),
+    );
+  }
+
   void _showTaskDetails(Task task) {
     Navigator.of(
       context,
@@ -337,9 +415,18 @@ class TaskTile extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
               ),
             const SizedBox(height: 4),
-            Text(
-              'Actualizado: ${_formatDate(task.updatedAt)}',
-              style: TextStyle(color: Colors.grey[600], fontSize: 12),
+            Row(
+              children: [
+                Text(
+                  'Actualizado: ${_formatDate(task.updatedAt)}',
+                  style: TextStyle(color: Colors.grey[600], fontSize: 12),
+                ),
+                if (task.syncedAt == null)
+                  const Padding(
+                    padding: EdgeInsets.only(left: 8),
+                    child: Icon(Icons.sync, size: 12, color: Colors.orange),
+                  ),
+              ],
             ),
           ],
         ),
