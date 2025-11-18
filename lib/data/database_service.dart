@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:path/path.dart';
 import '../models/task.dart';
 import 'memory_database.dart';
@@ -23,16 +24,16 @@ class DatabaseService {
     if (!_initialized) {
       // Inicializar databaseFactory según plataforma
       if (kIsWeb) {
-        // Para web, inicializar memoria (requeriría sqflite_common_ffi)
+        // Para web, inicializar memoria
         _memoryData = [];
-        // databaseFactory = databaseFactoryFfi; // No disponible sin import
+        databaseFactory = databaseFactoryFfi;
       } else if (Platform.isAndroid || Platform.isIOS) {
         // Para Android/iOS, usar sqflite nativo (no necesita inicialización)
         // databaseFactory ya está configurado por sqflite
       } else {
-        // Para desktop (Windows, macOS, Linux)
-        // Nota: Para desktop necesitarías descomentar sqflite_common_ffi en pubspec.yaml
-        // Por ahora, dejamos sin inicialización especial para desktop
+        // Para desktop (Windows, macOS, Linux), usar sqflite_common_ffi
+        sqfliteFfiInit();
+        databaseFactory = databaseFactoryFfi;
       }
       _initialized = true;
     }
