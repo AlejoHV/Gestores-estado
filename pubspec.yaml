@@ -55,7 +55,7 @@ dependencies:
   
   # Network connectivity
   connectivity_plus: ^7.0.0
-  sqflite_common_ffi: ^2.3.6
+  # sqflite_common_ffi: ^2.3.6  # Solo para escritorio/web, comentado para Android
 
 dev_dependencies:
   flutter_test:
