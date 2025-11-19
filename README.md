@@ -25,7 +25,7 @@ Aplicación móvil Flutter de gestión de tareas con arquitectura limpia, persis
 ### Arquitectura
 ```
 lib/
-├── data/                    # Capa de datos
+├── data/                   # Capa de datos
 │   ├── local/              # Persistencia local
 │   │   ├── database_service.dart
 │   │   └── memory_database.dart
@@ -39,7 +39,7 @@ lib/
 │   └── task_provider.dart
 ├── screens/                # Interfaces de usuario
 │   └── task_list_screen.dart
-└── main.dart              # Punto de entrada
+└── main.dart               # Punto de entrada
 ```
 
 ## 📁 Estructura de Carpetas y Capas
@@ -154,7 +154,19 @@ CREATE TABLE queue_operations (
 
 ## 📸 Capturas de Pantalla
 
-![alt text](image-1.png)
+<img width="288" height="640" alt="image" src="https://github.com/user-attachments/assets/23b7d04a-0412-46b2-be4b-de7cf00df5e1" />
+<img width="288" height="640" alt="image" src="https://github.com/user-attachments/assets/896f68bc-26ac-4136-bd21-3b6c799a4b02" />
+<img width="288" height="640" alt="image" src="https://github.com/user-attachments/assets/114a29cb-8dea-463d-9c5c-3bf740cb4d44" />
+<img width="288" height="640" alt="image" src="https://github.com/user-attachments/assets/d5736f20-4191-4396-b1ec-461d17961509" />
+<img width="288" height="640" alt="image" src="https://github.com/user-attachments/assets/59c16e0a-fcb0-48fb-80ac-f4a8cf949a81" />
+<img width="288" height="640" alt="image" src="https://github.com/user-attachments/assets/75c6f5ec-d8e1-4892-a6f8-2ddb1e2cadab" />
+<img width="288" height="640" alt="image" src="https://github.com/user-attachments/assets/59f8fce6-0d2c-40b7-bb33-e6faa4039d85" />
+<img width="288" height="640" alt="image" src="https://github.com/user-attachments/assets/b575993b-5956-4ea8-8cdd-b3d7453c9be3" />
+<img width="288" height="640" alt="image" src="https://github.com/user-attachments/assets/c950efe9-ddea-4d85-b89c-14dc1bbe653f" />
+<img width="288" height="640" alt="image" src="https://github.com/user-attachments/assets/5180055d-abbe-4a00-96c4-c0f8f36a442b" />
+<img width="288" height="640" alt="image" src="https://github.com/user-attachments/assets/653dffcd-65bf-4825-8356-00faeca1a24a" />
+<img width="288" height="640" alt="image" src="https://github.com/user-attachments/assets/32787e55-a711-45ec-992f-477836df1ae7" />
+
 
 ### Vista Principal
 - Lista de tareas con filtros
